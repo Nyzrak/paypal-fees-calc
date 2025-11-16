@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}PayPal Calculator{% endblock %}
+
+{% block content %}
+  <h2>PayPal Fees Calculator</h2>
+  <form id="paypal-calc-form" method="post">
+    {% csrf_token %}
+    <div>
+      {% for key, label in goods_type_items %}
+      <label>
+        <input type="radio" name="goods_type" value="{{ key }}" {% if forloop.first %}required{% endif %}>
+        {{ label }}
+      </label>
+    {% endfor %}
+    </div>
+    <div>
+      <label for="amount">Amount:</label>
+      <input type="number" id="amount" name="amount" min="0" step="0.01" required>
+    </div>
+    <button type="submit">Calculate</button>
+  </form>
+  <p id="result">
+  {% if error is not None %}
+  {% endif %}
+    {% if result is not None %}
+      Result: {{ result }}
+    {% endif %}
+  </p>
+{% endblock content %}
+
+{% block javascript %}
+  <script>
+    document.getElementById('paypal-calc-form').addEventListener('submit', function(e){
+      // Optionally handle client-side calculation or validations here.
+      // For backend calculation, keep default behavior.
+    });
+  </script>
+{% endblock %}

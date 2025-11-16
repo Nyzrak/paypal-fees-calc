@@ -14,12 +14,12 @@
     {% bootstrap_css %}
     {% block css %}{% endblock %}
 
-    {% bootstrap_javascript jquery='full' %}
+    {% bootstrap_javascript %}
     {% block javascript %}{% endblock javascript %}
 </head>
 <body>
     {% block header %}
-        {% include "components/header.html" %}
+        {% include "header.html" %}
     {% endblock %}
 
     <main>

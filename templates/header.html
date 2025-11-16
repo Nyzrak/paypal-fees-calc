@@ -1,10 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% load i18n l10n static %}
+<label class="nav-underlay" for="nav-active"></label>
 
-</body>
-</html>
+{% comment %}
+<nav>
+	<ul>
+		<li>Home</li>
+	</ul>
+</nav>
+{% endcomment %}
+{% comment %}
+<nav class="nav">
+	<div class="nav__container" >
+		<div class="nav__main">
+			<a class="nav__logo" href="{% url 'home' %}" aria-label="Ultra Smart Card">
+				<img src="{% static "images/logo.svg" %}" alt="Ultra Smart Card Logo" />
+			</a>
+
+			<ul class="nav__items" role="list">
+				{% include "v1/includes/header_nav_items.html" %}
+			</ul>
+
+			<ul class="nav__actions">
+				{% include "v1/includes/header_nav_actions.html" %}
+
+			</ul>
+
+			<div class="nav__toggle">
+				<label for="nav-active">
+					<span>{% translate 'Menu' %}</span>
+				</label>
+			</div>
+		</div>
+
+		<div class="nav__mobile">
+			<ul class="nav__mobile__items">
+				{% include "v1/includes/header_nav_items.html" %}
+			</ul>
+			<ul class="nav__mobile__actions">
+				{% include "v1/includes/header_nav_actions.html" %}
+			</ul>
+		</div >
+	</div>
+</nav>
+{% endcomment %}
